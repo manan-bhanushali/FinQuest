@@ -1,6 +1,7 @@
 import os
 from pymongo import MongoClient
 from dotenv import load_dotenv
+import certifi
 
 # Load environment variables from .env file
 load_dotenv()
@@ -12,7 +13,7 @@ if not MONGO_URI:
 
 # Initialize MongoDB client
 # Setting serverSelectionTimeoutMS to quickly fail if the server can't be reached
-client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
+client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000, tlsCAFile=certifi.where(), tlsAllowInvalidCertificates=True)
 
 try:
     # Trigger a server connection test

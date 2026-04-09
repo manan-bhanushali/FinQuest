@@ -31,3 +31,17 @@ class OrderRecord(BaseModel):
 class PortfolioResponse(BaseModel):
     balance: float
     orders: List[OrderRecord]
+
+class SignalTrigger(BaseModel):
+    sym: str
+    type: str # "Golden Cross", "Death Cross", "Scalp"
+    trend: str # "Upward", "Downward"
+    price: float
+    
+class SignalRecord(BaseModel):
+    id: float
+    sym: str
+    type: str
+    trend: str
+    price: float
+    ts: float
